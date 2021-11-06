@@ -1,9 +1,7 @@
 package com.company;
 
-import java.lang.reflect.Array;
 import java.util.Random;
 import java.util.Scanner;
-import java.util.Arrays;
 
 public class Main {
 
@@ -68,7 +66,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         Random random = new Random();
-        String[] words = {"apple", "illusion", "banner", "company", "contact", "linear", "test", "roll", "miracle", "elect"};
+        final String[] words = {"sky", "force", "terms", "company", "senior", "linear", "security", "computer", "miracle", "basic"};
         String randomWord = words[random.nextInt(10)];
         char[] lettersCorrect = new char[randomWord.length()];
         int count = 0;
@@ -89,10 +87,12 @@ public class Main {
                 count += 1;
                 originalHangman(count, randomWord);
             }
-            for (int i = 0; i < randomWord.length(); i++) {
-                if((randomWord.indexOf(i))==(lettersCorrect[i])){
-                    System.out.println("You have");
-                }
+            String completeWord = String.valueOf(lettersCorrect);
+            if (completeWord.equals(randomWord)) {
+                System.out.println("You guessed the word in under 5 guesses.");
+                System.out.println("Congrats you won!");
+                count = 5;
+                break;
             }
         }
     }
